@@ -13,6 +13,7 @@ const login = async(req, res ) => {
         var cari_email = await knex('l_users').where({
           user_email:username
         });
+        
         if(cari_email.length==0){
           return res.status(404).send({
               auth: false,
@@ -61,6 +62,7 @@ const login = async(req, res ) => {
         );
     } 
     catch (e) {
+      console.log(e);
       res.status(404).send({
         auth: false,
         id: req.body.username,
